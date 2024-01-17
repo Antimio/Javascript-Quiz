@@ -57,10 +57,14 @@ function selectAnswer(event) {
     var selectedAnswer = event.target.textContent;
     if (questions[currentQuestionArrayPosition].correctAnswer === selectedAnswer) {
         correctSound.play();
+        feedback.textContent = "Correct!"
+        feedback.classList.remove("hide");
     } else {
         incorrectSound.play();
         timerCount = Math.max(0, timerCount - 10); // Prevents time from going below zero by compating it to zero and returnig the greater of the two.
         timerDisplay.textContent = timerCount;
+        feedback.textContent = "Incorrect!"
+        feedback.classList.remove("hide");
     }
     currentQuestionArrayPosition++;
     if ((currentQuestionArrayPosition < questions.length) && (timerCount > 0)) {
